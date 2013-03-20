@@ -1,0 +1,41 @@
+/* TODO: Insert reset here. */
+
+#wrapper
+{
+    width: 960px;
+    background-color: #ddd;
+    margin: 0 auto;
+}
+
+.sample-pad
+{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    float: left;
+    background-color: #999;
+}
+
+.samplerRow
+{
+    display: block;
+    overflow: hidden;
+}
+
+.samplerRow .sample-pad:first-child
+{
+    margin-left: 0;
+}
+
+.samplerRow .sample-pad:last-child
+{
+    margin-right: 0;
+}
+
+#sampler
+{
+    width: 430px;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,9 +1,11 @@
 (function($){
 
-	var SequenceEvent = function( step, options )
+	var SequenceEvent = function( element, step, options )
 	{
+		this.element = element;
 		this.step = step;
 		this.options = $.extend({}, this.defaults, options);
+		this.init();
 	};
 
 	SequenceEvent.prototype =
@@ -18,8 +20,9 @@
 
 		init: function()
 		{
-			$(this).on("fire" + this.step, this.options.fire());
-			//$.off("afterFire" + this.step, this.options.done());
+			var self = this;
+			this.element.on("fire" + this.step, function(){self.options.fire()});
+			this.element.off("afterFire" + this.step, function(){this.options.done()});
 		}
 	};
 
@@ -47,15 +50,23 @@
 		prepareSequence: function()
 		{
 			this.commandSequence.length = this.options.steps;
-			// for (var i = 0; i < this.options.steps; i++) {
-			// 	$.
-			// };
+			var fire;
+			var done;
+			for (var i = 1; i <= this.options.steps; i++) {
+				fire = "fire" + i;
+				done = "done" + i;
+				$.event.trigger({
+					type: fire,
+					message: "Is this necessary? -Gabo",
+					time: new Date()
+				});
+			}
 		},
 
 		addEvent: function( step, calls )
 		{
 			// TODO: This may not be needed to be put in an array.
-			this.commandSequence.push( new SequenceEvent( step, calls ) );
+			this.commandSequence.push( new SequenceEvent(this.element, step, calls ) );
 		},
 
 		getDelayTime: function()

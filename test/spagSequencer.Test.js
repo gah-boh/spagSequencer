@@ -3,7 +3,7 @@ describe( "Sequencer", function()
 	var sequencer, instance;
 	beforeEach( function()
 	{
-		sequencer = $('<div></div>').spagSequencer({
+		sequencer = $('<div id="sequencerDiv"></div>').spagSequencer({
 			steps: 32
 		});
 		instance = sequencer.data('spagSequencer');
@@ -38,8 +38,7 @@ describe( "Sequencer", function()
 	});
 	it("should have function added to commandSequence", function()
 	{
-		var sequenceCommand = function(){ console.log("GABO")};
-//		var sequenceCommand = jasmine.createSpy( "sequenceCommand" );
+		var sequenceCommand = jasmine.createSpy( "sequenceCommand" );
 		sequencer.spagSequencer("addEvent", 1, {fire: sequenceCommand});
 		sequencer.trigger("fire1");
 		expect( sequenceCommand ).toHaveBeenCalled();

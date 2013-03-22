@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>spag sequencer sandbox</title>
+	<style>
+		#button
+		{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+	<script src="../jquery/jquery-1.9.1.js"></script>
+	<script src="../spagSequencer.js"></script>
+	<script>
+		$(document).ready( function()
+			{
+				$('#sampler').spagSequencer({steps: 32});
+				var testCommand = function(){ console.log("Gabo it's working") };
+				$('#sampler').spagSequencer( "addEvent", 1, { fire: testCommand } );
+				// $('#button').on( "click", function(){ alert("First Test Alert") } );
+				$('#button').on( "click", function(){ $('#sampler').trigger("fire1") });
+                //$('#sampler').trigger("fire1");
+				//$('#button').click();
+			});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="sampler"></div>
+		<div id="button"></div>
+	</div>
+</body>
+</html>

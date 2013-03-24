@@ -1,3 +1,4 @@
+/*Spag Sequencer*/
 (function($){
 
     var SequenceEvent = function( element, step, options )
@@ -23,6 +24,7 @@
             var self = this;
             this.element.on("fire" + this.step, function(){self.options.fire()});
             this.element.off("afterFire" + this.step, function(){this.options.done()});
+	        var DELETEME;
         }
     };
 

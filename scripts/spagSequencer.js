@@ -22,8 +22,8 @@
         init: function()
         {
 	        var self = this;
-            this.element.on("fire" + this.step, self.options.fire);
-            this.element.on("afterFire" + this.step, self.options.done);
+            this.element.on("fire" + self.step, self.options.fire);
+            this.element.on("afterFire" + self.step, self.options.done);
         },
 
         removeEvents: function()
@@ -38,8 +38,10 @@
     {
         this.element = $(element);
         this.options = $.extend({}, $.fn.spagSequencer.defaults, options);
+	    this.playing = false;
+	    this.currentStep = 1;
 
-        this.commandSequence = [];
+        this.sequenceCommands = [];
 
         this.prepareSequence();
     };
@@ -57,15 +59,21 @@
 
         prepareSequence: function()
         {
-            //this.commandSequence.length = this.options.steps;
+            // TODO: Clean this
+            //this.sequenceCommands.length = this.options.steps;
             var fire;
             var done;
             for (var i = 1; i <= this.options.steps; i++) {
                 fire = "fire" + i;
-                done = "done" + i;
+                done = "afterFire" + i;
                 $.event.trigger({
                     type: fire,
                     message: "Is this necessary? -Gabo",
+                    time: new Date()
+                });
+                $.event.trigger({
+                    type: done,
+                    message: "Is this really necessary? -Gabo",
                     time: new Date()
                 });
             }
@@ -74,31 +82,86 @@
         addEvent: function( step, calls )
         {
             // TODO: This may not be needed to be put in an array.
-            this.commandSequence.push( new SequenceEvent(this.element, step, calls ) );
+            this.sequenceCommands.push( new SequenceEvent(this.element, step, calls ) );
         },
 
         removeAllEvents: function()
         {
 	        var self = this;
-            for( var i=0; i < this.commandSequence.length; i++)
+            for( var i=0; i < this.sequenceCommands.length; i++)
             {
-                self.commandSequence[i].removeEvents();
+                self.sequenceCommands[i].removeEvents();
             }
-            this.commandSequence.length = [];
+            this.sequenceCommands.length = 0;
         },
 
         getDelayTime: function()
         {
-            var beatPerSecond = this.options.bpm / 60;
+            var beatPerSecond = 60 / this.options.bpm;
             return beatPerSecond / (this.options.steps / 4);
         },
 
         play: function()
         {
             // TODO: Finish this
+	        if(this.isPlaying)
+	        {
+		        this.fire();
+	        }
+        },
 
-        }
+        start: function()
+        {
+            this.isPlaying = true;
+            this.play();
+        },
+
+        pause: function()
+        {
+            this.isPlaying = false;
+	        this.clearTimedEvent();
+        },
+
+        stop: function()
+        {
+            this.isPlaying = false;
+            this.done(this);
+            this.currentStep = 1;
+	        this.clearTimedEvent();
+        },
+
+	    fire: function()
+	    {
+            // TODO: Clean this.
+		    var self = this;
+		    $(this.element).trigger("fire" + this.currentStep);
+		    this.currentStep++;
+		    if(this.currentStep > this.options.steps)
+		    {
+			    //console.log("YO");
+			    this.currentStep = 1;
+		    }
+            // TODO: Do I need to wrap self.done in a function???
+		    this.timeout = setTimeout(function(){self.done(self)}, (this.getDelayTime() * 1000) );
+	    },
+
+	    done: function(self)
+	    {
+            // TODO: CLEAN THIS self may not be necessary!
+		    var previousStep = self.currentStep - 1 == 0 ? self.options.steps : self.currentStep - 1;
+		    $(self.element).trigger("afterFire" + previousStep);
+//		    this.element.trigger("done" + previousStep);
+		    self.play();
+	    },
+
+	    clearTimedEvent: function()
+	    {
+		    clearTimeout(this.timeout);
+		    this.timeout = null;
+	    }
     };
+
+    var old = $.fn.spagSequencer;
 
     $.fn.spagSequencer = function( options )
     {
@@ -126,5 +189,11 @@
         bpm:    140,
         steps:  16
     };
+
+    $.fn.spagSequencer.noConflict = function()
+    {
+        $.fn.spagSequencer = old;
+        return this;
+    }
 
 })(jQuery);

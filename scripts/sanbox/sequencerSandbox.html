@@ -3,33 +3,93 @@
 <head>
 	<meta charset="UTF-8">
 	<title>spag sequencer sandbox</title>
-	<style>
-		#button
-		{
-			width: 200px;
-			height: 200px;
-			background-color: red;
-		}
-	</style>
+	<link rel="stylesheet" href="../../css/site.css">
 	<script src="../jquery/jquery-1.9.1.js"></script>
 	<script src="../spagSequencer.js"></script>
 	<script>
 		$(document).ready( function()
 			{
-				$('#sampler').spagSequencer({steps: 32});
-				var testCommand = function(){ console.log("Gabo it's working") };
-				$('#sampler').spagSequencer( "addEvent", 1, { fire: testCommand } );
-				// $('#button').on( "click", function(){ alert("First Test Alert") } );
-				$('#button').on( "click", function(){ $('#sampler').trigger("fire1") });
-                //$('#sampler').trigger("fire1");
-				//$('#button').click();
+				var sampler = $('#sampler');
+				sampler.spagSequencer({bpm:160});
+				$('.light').each(function()
+					{
+						$this = $(this);
+						var step = $(this).data('step');
+						var id = 'light' + step;
+						$this.attr('id', id);
+						var lightOn = function()
+						{
+							$('#' + id).addClass('lightOn');
+							//console.log($this);
+						};
+						var lightOff = function()
+						{
+							$('#'+ id).removeClass('lightOn');
+						}
+						sampler.spagSequencer('addEvent', step, {fire: lightOn, done: lightOff});
+					});	
+				$('#start').on('click', function(){$('#sampler').spagSequencer("start");});
+				$('#stop').on('click', function(){$('#sampler').spagSequencer("stop");});
+				$('#pause').on('click', function(){$('#sampler').spagSequencer("pause");});
+				//$('#sampler').spagSequencer('start');
 			});
 	</script>
 </head>
 <body>
 	<div id="wrapper">
-		<div id="sampler"></div>
-		<div id="button"></div>
+		<div id="sampler">
+			<div class="box">
+				<div class="light" data-step=1></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=2></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=3></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=4></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=5></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=6></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=7></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=8></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=9></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=10></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=11></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=12></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=13></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=14></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=15></div>
+			</div>
+			<div class="box">
+				<div class="light" data-step=16></div>
+			</div>
+		</div>
+		<div class="samplerButton" id="start">Start</div>
+		<div class="samplerButton" id="stop">Stop</div>
+		<div class="samplerButton" id="pause">Pause</div>
 	</div>
 </body>
 </html>

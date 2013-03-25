@@ -19,10 +19,10 @@ describe( "Sequencer", function()
 	{
 		expect(instance.options.steps).toEqual(32);
 	});
-	it("length of command sequence array should be 32", function()
-	{
-		expect(instance.commandSequence.length).toEqual(32);
-	});
+//	it("length of command sequence array should be 32", function()
+//	{
+//		expect(instance.commandSequence.length).toEqual(32);
+//	});
 	it("should have a new bpm of 100 and still have steps at 32", function()
 	{
 		sequencer.spagSequencer( "setOption", "bpm", 100 );
@@ -48,5 +48,13 @@ describe( "Sequencer", function()
 		spyOn(instance, 'play');
 		sequencer.spagSequencer('play');
 		expect(instance.play).toHaveBeenCalled();
+	});
+	it("remove all triggers", function()
+	{
+		var sequenceCommand = jasmine.createSpy("sequenceCommand");
+		sequencer.spagSequencer("addEvent", 1, {fire: sequenceCommand});
+		sequencer.spagSequencer("removeAllEvents");
+		sequencer.trigger("fire1");
+		expect( sequenceCommand).not.toHaveBeenCalled();
 	});
 });

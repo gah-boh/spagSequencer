@@ -21,9 +21,16 @@
 
         init: function()
         {
-            var self = this;
-            this.element.on("fire" + this.step, function(){self.options.fire()});
-            this.element.off("afterFire" + this.step, function(){this.options.done()});
+	        var self = this;
+            this.element.on("fire" + this.step, self.options.fire);
+            this.element.on("afterFire" + this.step, self.options.done);
+        },
+
+        removeEvents: function()
+        {
+	        var self = this;
+            this.element.off("fire" + self.step, self.options.fire);
+            this.element.off("afterFire" + self.step, self.options.done);
         }
     };
 
@@ -50,7 +57,7 @@
 
         prepareSequence: function()
         {
-            this.commandSequence.length = this.options.steps;
+            //this.commandSequence.length = this.options.steps;
             var fire;
             var done;
             for (var i = 1; i <= this.options.steps; i++) {
@@ -68,6 +75,16 @@
         {
             // TODO: This may not be needed to be put in an array.
             this.commandSequence.push( new SequenceEvent(this.element, step, calls ) );
+        },
+
+        removeAllEvents: function()
+        {
+	        var self = this;
+            for( var i=0; i < this.commandSequence.length; i++)
+            {
+                self.commandSequence[i].removeEvents();
+            }
+            this.commandSequence.length = [];
         },
 
         getDelayTime: function()

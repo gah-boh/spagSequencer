@@ -38,7 +38,6 @@ describe( "Sequencer", function()
 	});
 	it("should have function added to commandSequence", function()
 	{
-		var DELETEME;
 		var sequenceCommand = jasmine.createSpy( "sequenceCommand" );
 		sequencer.spagSequencer("addEvent", 1, {fire: sequenceCommand});
 		sequencer.trigger("fire1");

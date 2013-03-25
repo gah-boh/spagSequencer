@@ -3,8 +3,8 @@ server: http://localhost:4224
 load:
   - test/jasmine/jasmine-1.1.0.js
   - test/jasmine/JasmineAdapter-1.1.2.js
-  - scripts/jquery/jquery-1.9.1.js
-  - scripts/spagSequencer.js
+  - Scripts/jquery/jquery-1.9.1.js
+  - Scripts/spagSequencer.js
 
 test:
   - test/*.Test.js

@@ -80,7 +80,6 @@
 
         addEvent: function( step, calls )
         {
-            // TODO: This may not be needed to be put in an array.
 	        var addedEvent = new SequenceEvent(this.element, step, calls );
             this.sequenceCommands.push( addedEvent );
 	        return addedEvent;

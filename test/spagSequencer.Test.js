@@ -158,7 +158,7 @@ describe( "Sequencer", function()
 
 	});
 	// TODO: Add safety check for method not available.
-	// TODO: Add pause feature
+	// TODO: Add pause testing.
 	// TODO: Add Loop feature
 	// TODO: Add reverse feature
 });

@@ -11,6 +11,10 @@ describe( "Sequencer", function()
 		return $(sequencer).appendTo($('body')).html("<div id='PluginPage'>");
 
 	});
+	afterEach( function()
+	{
+		sequencer.spagSequencer("stop");
+	});
 	it("should return a default bpm of 140", function()
 	{
 		expect(instance.options.bpm).toEqual(140);
@@ -142,15 +146,16 @@ describe( "Sequencer", function()
 		sequencer.spagSequencer("start");
 
 		runs(function(){
-			setTimeout(function(){flag = true;}, 110);
+			setTimeout(function(){flag = true;}, 150);
 		});
 
-		waitsFor(function(){ return flag }, "The command should have been called", 500);
+		waitsFor(function(){ return flag }, "The command should have been called", 200);
 
 		runs(function()
 		{
 			expect(command.callCount).toEqual(1);
 		});
+
 	});
 	// TODO: Add safety check for method not available.
 	// TODO: Add pause feature

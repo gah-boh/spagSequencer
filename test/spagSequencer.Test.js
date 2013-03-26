@@ -91,6 +91,11 @@ describe( "Sequencer", function()
 		sequencer.spagSequencer("stop");
 		expect(instance.clearTimedEvent).toHaveBeenCalled();
 	});
+	it("stop should have correct order of method calls", function()
+	{
+
+	});
 	// TODO: Test order of function calls in stop
 	// TODO: Test that start isn't called while the sequencer is running.
+	// TODO: Remove a single event from the array, if necessary
 });

@@ -16,21 +16,21 @@
         defaults:
         {
             fire: function(){},
-            done: function(){}
+            afterFire: function(){}
         },
 
         init: function()
         {
 	        var self = this;
             this.element.on("fire" + self.step, self.options.fire);
-            this.element.on("afterFire" + self.step, self.options.done);
+            this.element.on("afterFire" + self.step, self.options.afterFire);
         },
 
         removeEvents: function()
         {
 	        var self = this;
             this.element.off("fire" + self.step, self.options.fire);
-            this.element.off("afterFire" + self.step, self.options.done);
+            this.element.off("afterFire" + self.step, self.options.afterFire);
         }
     };
 
@@ -59,8 +59,6 @@
 
         prepareSequence: function()
         {
-            // TODO: Clean this
-            //this.sequenceCommands.length = this.options.steps;
             var fire;
             var done;
             for (var i = 1; i <= this.options.steps; i++) {
@@ -103,7 +101,6 @@
 
         play: function()
         {
-            // TODO: Finish this
 	        if(this.isPlaying)
 	        {
 		        this.fire();
@@ -125,33 +122,28 @@
         stop: function()
         {
             this.isPlaying = false;
-            this.done(this);
+            this.afterFire();
             this.currentStep = 1;
 	        this.clearTimedEvent();
         },
 
 	    fire: function()
 	    {
-            // TODO: Clean this.
 		    var self = this;
 		    $(this.element).trigger("fire" + this.currentStep);
 		    this.currentStep++;
 		    if(this.currentStep > this.options.steps)
 		    {
-			    //console.log("YO");
 			    this.currentStep = 1;
 		    }
-            // TODO: Do I need to wrap self.done in a function???
-		    this.timeout = setTimeout(function(){self.done(self)}, (this.getDelayTime() * 1000) );
+		    this.timeout = setTimeout(function(){self.afterFire()}, (this.getDelayTime() * 1000) );
 	    },
 
-	    done: function(self)
+	    afterFire: function()
 	    {
-            // TODO: CLEAN THIS self may not be necessary!
-		    var previousStep = self.currentStep - 1 == 0 ? self.options.steps : self.currentStep - 1;
-		    $(self.element).trigger("afterFire" + previousStep);
-//		    this.element.trigger("done" + previousStep);
-		    self.play();
+		    var previousStep = this.currentStep - 1 == 0 ? this.options.steps : this.currentStep - 1;
+		    $(this.element).trigger("afterFire" + previousStep);
+		    this.play();
 	    },
 
 	    clearTimedEvent: function()

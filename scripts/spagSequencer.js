@@ -38,7 +38,8 @@
     {
         this.element = $(element);
         this.options = $.extend({}, $.fn.spagSequencer.defaults, options);
-	    this.playing = false;
+	    this.isPlaying = false;
+        this.isPaused = false;
 	    this.currentStep = 1;
 
         this.sequenceCommands = [];
@@ -80,8 +81,23 @@
         addEvent: function( step, calls )
         {
             // TODO: This may not be needed to be put in an array.
-            this.sequenceCommands.push( new SequenceEvent(this.element, step, calls ) );
+	        var addedEvent = new SequenceEvent(this.element, step, calls );
+            this.sequenceCommands.push( addedEvent );
+	        return addedEvent;
         },
+
+	    removeEvent: function(eventToRemove)
+	    {
+            var index = this.sequenceCommands.indexOf(eventToRemove);
+            if(index == -1){
+	            return false;
+            }
+
+            this.sequenceCommands[index].removeEvents();
+            this.sequenceCommands.splice(index, 1);
+
+		    return true;
+	    },
 
         removeAllEvents: function()
         {
@@ -96,19 +112,27 @@
         getDelayTime: function()
         {
             var beatPerSecond = 60 / this.options.bpm;
-            return beatPerSecond / (this.options.steps / 4);
+            return beatPerSecond / 4;
         },
 
         play: function()
         {
-	        if(this.isPlaying)
+	        if(this.isPlaying &! this.isPaused)
 	        {
 		        this.fire();
+	        }
+	        else if (this.isPaused && this.isPlaying)
+	        {
+		        this.fireFromPause();
 	        }
         },
 
         start: function()
         {
+	        if(this.isPlaying)
+	        {
+		        this.stop();
+	        }
             this.isPlaying = true;
             this.play();
         },
@@ -116,12 +140,14 @@
         pause: function()
         {
             this.isPlaying = false;
+            this.isPaused = true;
 	        this.clearTimedEvent();
         },
 
         stop: function()
         {
             this.isPlaying = false;
+	        this.isPaused = false;
             this.afterFire();
             this.currentStep = 1;
 	        this.clearTimedEvent();
@@ -137,6 +163,14 @@
 			    this.currentStep = 1;
 		    }
 		    this.timeout = setTimeout(function(){self.afterFire()}, (this.getDelayTime() * 1000) );
+	    },
+
+	    fireFromPause: function()
+	    {
+		    this.isPaused = false;
+		    this.isPlaying = true;
+		    this.currentStep--;
+		    this.afterFire();
 	    },
 
 	    afterFire: function()
@@ -158,6 +192,11 @@
     $.fn.spagSequencer = function( options )
     {
         var args = Array.prototype.slice.call(arguments, 1);
+
+	    if(options == "addEvent")
+	    {
+		    return this.data("spagSequencer").addEvent.apply(this.data("spagSequencer"), args);
+	    }
 
         return this.each( function()
             {

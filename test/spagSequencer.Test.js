@@ -93,9 +93,67 @@ describe( "Sequencer", function()
 	});
 	it("stop should have correct order of method calls", function()
 	{
+		sequencer.spagSequencer("start");
+		spyOn(instance, 'fire');
+		sequencer.spagSequencer("stop");
+		expect(instance.fire).not.toHaveBeenCalled();
 
 	});
-	// TODO: Test order of function calls in stop
-	// TODO: Test that start isn't called while the sequencer is running.
-	// TODO: Remove a single event from the array, if necessary
+	it("Start called twice should stop and start again", function()
+	{
+		sequencer.spagSequencer("start");
+		spyOn(instance, 'stop');
+		spyOn(instance, 'play');
+		sequencer.spagSequencer("start");
+		expect(instance.stop).toHaveBeenCalled();
+		expect(instance.play).toHaveBeenCalled();
+	});
+	it("Should remove single command", function()
+	{
+		var sequenceCommand = jasmine.createSpy("sequenceCommand");
+		var commandToRemove = jasmine.createSpy("commandToRemove");
+		sequencer.spagSequencer("addEvent", 1, {fire: sequenceCommand});
+		var removeMe = sequencer.spagSequencer("addEvent", 1, {fire: commandToRemove});
+		sequencer.spagSequencer("removeEvent", removeMe);
+		sequencer.spagSequencer("fire");
+		expect(commandToRemove).not.toHaveBeenCalled();
+		expect(sequenceCommand).toHaveBeenCalled();
+		expect(instance.sequenceCommands.length).toEqual(1);
+	});
+	it("Should remove one command out of two identical ones", function()
+	{
+		var command1 = jasmine.createSpy("command");
+		var command2 = jasmine.createSpy("command");
+		sequencer.spagSequencer("addEvent", 1, {fire: command1});
+		var removeMe = sequencer.spagSequencer("addEvent", 1, {fire: command2});
+		sequencer.spagSequencer("fire");
+		instance.currentStep = 1;
+		sequencer.spagSequencer("removeEvent", removeMe);
+		sequencer.spagSequencer("fire");
+		expect(instance.sequenceCommands.length).toEqual(1);
+		expect(command2.callCount).toEqual(1);
+		expect(command1.callCount).toEqual(2);
+	});
+	it("Should call command at correct time", function()
+	{
+		var flag = false;
+		var command = jasmine.createSpy("command");
+		sequencer.spagSequencer("addEvent", 2, {fire: command});
+		sequencer.spagSequencer("start");
+
+		runs(function(){
+			setTimeout(function(){flag = true;}, 110);
+		});
+
+		waitsFor(function(){ return flag }, "The command should have been called", 500);
+
+		runs(function()
+		{
+			expect(command.callCount).toEqual(1);
+		});
+	});
+	// TODO: Add safety check for method not available.
+	// TODO: Add pause feature
+	// TODO: Add Loop feature
+	// TODO: Add reverse feature
 });

@@ -31,60 +31,135 @@
 				$('#start').on('click', function(){$('#sampler').spagSequencer("start");});
 				$('#stop').on('click', function(){$('#sampler').spagSequencer("stop");});
 				$('#pause').on('click', function(){$('#sampler').spagSequencer("pause");});
-				//$('#sampler').spagSequencer('start');
 			});
 	</script>
 </head>
 <body>
 	<div id="wrapper">
 		<div id="sampler">
-			<div class="box">
-				<div class="light" data-step=1></div>
+			<div id="lights">
+				<div class="box">
+					<div class="light" data-step=1></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=2></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=3></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=4></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=5></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=6></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=7></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=8></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=9></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=10></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=11></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=12></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=13></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=14></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=15></div>
+				</div>
+				<div class="box">
+					<div class="light" data-step=16></div>
+				</div>
 			</div>
-			<div class="box">
-				<div class="light" data-step=2></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=3></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=4></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=5></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=6></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=7></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=8></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=9></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=10></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=11></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=12></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=13></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=14></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=15></div>
-			</div>
-			<div class="box">
-				<div class="light" data-step=16></div>
+			<div id="pads">
+				<div class="samplerRow">
+	                <div class="sample-pad" data-step=1 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=2 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=3 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=4 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=5 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=6 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=7 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=8 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=9 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=10 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=11 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=12 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=13 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=14 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=15 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=16 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	            </div>
+	            <div class="samplerRow">
+	                <div class="sample-pad" data-step=1 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=2 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=3 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=4 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=5 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=6 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=7 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=8 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=9 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=10 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=11 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=12 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=13 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=14 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=15 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=16 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	            </div>
+	            <div class="samplerRow">
+	                <div class="sample-pad" data-step=1 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=2 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=3 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=4 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=5 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=6 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=7 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=8 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=9 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=10 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=11 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=12 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=13 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=14 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=15 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=16 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	            </div>
+	            <div class="samplerRow">
+	                <div class="sample-pad" data-step=1 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=2 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=3 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=4 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=5 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=6 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=7 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=8 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=9 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=10 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=11 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=12 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=13 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=14 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=15 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	                <div class="sample-pad" data-step=16 data-file="samples/electro/CYCdh_ElecK01-ClHat01.wav"></div>
+	            </div>
 			</div>
 		</div>
 		<div class="samplerButton" id="start">Start</div>

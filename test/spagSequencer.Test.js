@@ -157,8 +157,20 @@ describe( "Sequencer", function()
 		});
 
 	});
-	// TODO: Add safety check for method not available.
+	it("Should pause at the correct time", function()
+	{
+		var command = jasmine.createSpy("command");
+		var afterCommand = jasmine.createSpy("afterCommand");
+		sequencer.spagSequencer("addEvent", 10, {fire: command, afterFire: afterCommand});
+		instance.currentStep = 10;
+		instance.fire();
+		instance.pause();
+		expect(instance.currentStep).toEqual(11);
+		sequencer.spagSequencer("fireFromPause");
+		expect(afterCommand.callCount).toEqual(1);
+	});
 	// TODO: Add pause testing.
 	// TODO: Add Loop feature
 	// TODO: Add reverse feature
+	// TODO: Add fire on add feature (optional).
 });

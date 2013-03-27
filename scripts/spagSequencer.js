@@ -168,7 +168,6 @@
 	    {
 		    this.isPaused = false;
 		    this.isPlaying = true;
-		    this.currentStep--;
 		    this.afterFire();
 	    },
 

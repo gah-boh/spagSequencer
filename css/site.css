@@ -63,6 +63,7 @@ table {
 {
     width: 20px;
     height: 20px;
+    margin-left: 15px;
     border-radius: 10px;
     background-color: #000;
 }
@@ -85,8 +86,8 @@ table {
 
 .sample-pad
 {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     margin: 5px;
     float: left;
     background-color: #999;
@@ -94,7 +95,7 @@ table {
 
 .samplerRow
 {
-    display: block;
+    float: left;
     overflow: hidden;
 }
 

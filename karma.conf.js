@@ -8,15 +8,23 @@ basePath = '';
 
 // list of files / patterns to load in the browser
 files = [
-  JASMINE,
-  JASMINE_ADAPTER,
-  'test/*.Test.js'
+	JASMINE,
+	JASMINE_ADAPTER,
+
+	// Libraries
+	'scripts/jquery/jquery-1.9.1.js',
+
+	// Source
+	'scripts/spagSequencer.js',
+
+	// Tests
+	'test/*.Test.js'
 ];
 
 
 // list of files to exclude
 exclude = [
-  
+
 ];
 
 
@@ -43,7 +51,7 @@ logLevel = LOG_INFO;
 
 
 // enable / disable watching file and executing tests whenever any file changes
-autoWatch = true;
+autoWatch = false;
 
 
 // Start these browsers, currently available:

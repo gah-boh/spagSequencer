@@ -10,7 +10,7 @@
 		$(document).ready( function()
 			{
 				var sampler = $('#sampler');
-				sampler.spagSequencer({bpm:160});
+				sampler.spagSequencer({bpm:160, reverse: true});
 				$('.light').each(function()
 					{
 						$this = $(this);
@@ -25,12 +25,13 @@
 						var lightOff = function()
 						{
 							$('#'+ id).removeClass('lightOn');
-						}
+						};
 						sampler.spagSequencer('addEvent', step, {fire: lightOn, afterFire: lightOff});
 					});	
 				$('#start').on('click', function(){$('#sampler').spagSequencer("start");});
 				$('#stop').on('click', function(){$('#sampler').spagSequencer("stop");});
 				$('#pause').on('click', function(){$('#sampler').spagSequencer("pause");});
+				$('#loop').on('click', function(){$('#sampler').spagSequencer("toggleLoop");});
 			});
 	</script>
 </head>
@@ -165,6 +166,7 @@
 		<div class="samplerButton" id="start">Start</div>
 		<div class="samplerButton" id="stop">Stop</div>
 		<div class="samplerButton" id="pause">Pause</div>
+		<div class="samplerButton" id="loop">Loop</div>
 	</div>
 </body>
 </html>

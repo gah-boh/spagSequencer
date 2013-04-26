@@ -40,7 +40,7 @@
         this.options = $.extend({}, $.fn.spagSequencer.defaults, options);
 	    this.isPlaying = false;
         this.isPaused = false;
-	    this.currentStep = 1;
+	    this.currentStep = this.options.reverse ? this.options.steps : 1;
 
         this.sequenceCommands = [];
 
@@ -57,6 +57,11 @@
             this.options[key] = value;
             this.prepareSequence();
         },
+
+	    toggleLoop: function()
+	    {
+		    this.options.loop = this.options.loop != true;
+	    },
 
         prepareSequence: function()
         {
@@ -116,7 +121,7 @@
 
         play: function()
         {
-	        if(this.isPlaying &! this.isPaused)
+	        if(this.isPlaying && !this.isPaused)
 	        {
 		        this.fire();
 	        }
@@ -148,7 +153,7 @@
             this.isPlaying = false;
 	        this.isPaused = false;
             this.afterFire();
-            this.currentStep = 1;
+            this.currentStep = !this.options.reverse ? 1 : this.options.steps;
 	        this.clearTimedEvent();
         },
 
@@ -156,10 +161,19 @@
 	    {
 		    var self = this;
 		    $(this.element).trigger("fire" + this.currentStep);
-		    this.currentStep++;
+		    !this.options.reverse ? this.currentStep++ : this.currentStep--;
+		    if( this.currentStep > this.options.steps && !this.options.loop ||
+			    this.currentStep == 0 && !this.options.loop )
+		    {
+			    this.pause();
+		    }
 		    if(this.currentStep > this.options.steps)
 		    {
 			    this.currentStep = 1;
+		    }
+		    else if(this.currentStep == 0)
+		    {
+			    this.currentStep = this.options.steps;
 		    }
 		    this.timeout = setTimeout(function(){self.afterFire()}, (this.getDelayTime() * 1000) );
 	    },
@@ -173,7 +187,13 @@
 
 	    afterFire: function()
 	    {
-		    var previousStep = this.currentStep - 1 == 0 ? this.options.steps : this.currentStep - 1;
+		    var previousStep;
+		    if(!this.options.reverse) {
+		        previousStep = this.currentStep - 1 == 0 ? this.options.steps : this.currentStep - 1;
+		    }
+		    else {
+			    previousStep = this.currentStep + 1 > this.options.steps ? 1 : this.currentStep + 1;
+		    }
 		    $(this.element).trigger("afterFire" + previousStep);
 		    this.play();
 	    },
@@ -216,7 +236,9 @@
     $.fn.spagSequencer.defaults =
     {
         bpm:    140,
-        steps:  16
+        steps:  16,
+	    loop:   true,
+	    reverse: false
     };
 
     $.fn.spagSequencer.noConflict = function()

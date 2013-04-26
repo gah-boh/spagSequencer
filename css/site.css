@@ -93,6 +93,11 @@ table {
     background-color: #999;
 }
 
+.sample-on
+{
+	background-color: #e9e5cc;
+}
+
 .samplerRow
 {
     float: left;

@@ -224,5 +224,24 @@ describe( "Sequencer", function()
 		instance.fire();
 		expect(instance.currentStep).toEqual(32);
 	});
+
 	// TODO: Add fire on add feature (optional).
+	it("should fire on add if option is enabled", function()
+	{
+		sequencer.spagSequencer("setOption", "fireOnAdd", true);
+		var command = jasmine.createSpy("fireOnAddCommand");
+		sequencer.spagSequencer("addEvent", 1, {fire: command});
+		expect(command).toHaveBeenCalled();
+	});
 });
+
+
+
+
+
+
+
+
+
+
+

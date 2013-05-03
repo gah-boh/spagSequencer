@@ -21,14 +21,14 @@
 
         init: function()
         {
-	        var self = this;
+            var self = this;
             this.element.on("fire" + self.step, self.options.fire);
             this.element.on("afterFire" + self.step, self.options.afterFire);
         },
 
         removeEvents: function()
         {
-	        var self = this;
+            var self = this;
             this.element.off("fire" + self.step, self.options.fire);
             this.element.off("afterFire" + self.step, self.options.afterFire);
         }
@@ -38,9 +38,9 @@
     {
         this.element = $(element);
         this.options = $.extend({}, $.fn.spagSequencer.defaults, options);
-	    this.isPlaying = false;
+        this.isPlaying = false;
         this.isPaused = false;
-	    this.currentStep = this.options.reverse ? this.options.steps : 1;
+        this.currentStep = this.options.reverse ? this.options.steps : 1;
 
         this.sequenceCommands = [];
 
@@ -58,10 +58,10 @@
             this.prepareSequence();
         },
 
-	    toggleLoop: function()
-	    {
-		    this.options.loop = this.options.loop != true;
-	    },
+        toggleLoop: function()
+        {
+            this.options.loop = this.options.loop !== true;
+        },
 
         prepareSequence: function()
         {
@@ -238,7 +238,8 @@
         bpm:    140,
         steps:  16,
 	    loop:   true,
-	    reverse: false
+	    reverse: false,
+        fireOnAdd: false
     };
 
     $.fn.spagSequencer.noConflict = function()

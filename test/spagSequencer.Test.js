@@ -233,8 +233,14 @@ describe( "Sequencer", function()
 		sequencer.spagSequencer("addEvent", 1, {fire: command});
 		expect(command).toHaveBeenCalled();
 	});
-});
 
+	it("should not fire on add when option is disabled", function()
+	{
+		var command = jasmine.createSpy("fireOnAddCommand");
+		sequencer.spagSequencer("addEvent", 1, {fire: command});
+		expect(command).not.toHaveBeenCalled();
+	});
+});
 
 
 

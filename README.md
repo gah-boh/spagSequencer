@@ -41,3 +41,7 @@ give the sequencer an object on initialization or by calling the method:
 
 ### Controls
 Call 'play', 'pause', 'stop' to control the sequencer.
+
+	element.spagSequencer("play");
+	element.spagSequencer("pause");
+	element.spagSequencer("stop");

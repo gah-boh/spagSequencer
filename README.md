@@ -17,11 +17,11 @@ give the sequencer an object on initialization or by calling the method:
 	setOption(<option>, <value>)
 
 **available options:**  
-	*bpm*:			<integer>		Beats Per Minute, controls the speed.  
-	*steps*:			<integer>		Steps per bar in 8's  
-	*loop*:			<boolean>		loop the sequencer after it finishes a sequence  
-	*reverse*:		<boolean>		play the sequence in reverse  
-	*fireOnAdd*:		<boolean>		fire the command when it's added  
+	*bpm*:			*integer*		Beats Per Minute, controls the speed.  
+	*steps*:		*integer*		Steps per bar in 8's  
+	*loop*:			*boolean*		loop the sequencer after it finishes a sequence  
+	*reverse*:		*boolean*		play the sequence in reverse  
+	*fireOnAdd*:	*boolean*		fire the command when it's added  
 
 Adding commands to the sequencer
  To add a command call the sequencer with "addEvent", the step to fire the command in the bar, and and object
@@ -36,6 +36,8 @@ Removing commands from the sequencer
 	element.spagSequencer("removeEvent", event);
  
  To remove all the elements call the removeAllEvents method:
- 
+
 	element.spagSequencer("removeAllEvents");
 
+### Controls
+Call 'play', 'pause', 'stop' to control the sequencer.

@@ -23,14 +23,14 @@ give the sequencer an object on initialization or by calling the method:
 	*reverse*:		*boolean*		play the sequence in reverse  
 	*fireOnAdd*:	*boolean*		fire the command when it's added  
 
-Adding commands to the sequencer
+### Adding Commands 
  To add a command call the sequencer with "addEvent", the step to fire the command in the bar, and and object
  with either the fire command, afterFire command or both.
  This returns the event object that will be needed to be passed to the sequencer if you need to remove it.
 
  	element.spagSequencer("addEvent", <step>, {"fire": <function for fire>, "afterFire": <function for after the fire});
 
-Removing commands from the sequencer
+### Removing Commands
  To remove a command from the sequencer you need to pass back the return value from the addEvent command.
 
 	element.spagSequencer("removeEvent", event);

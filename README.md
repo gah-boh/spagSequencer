@@ -14,12 +14,12 @@ Initialize the sequencer by calling it on a jQuery object
 
 or
 
-	$('#element').spagSequencer;
+	$('#element').spagSequencer();
 
 ### Options
 give the sequencer an object on initialization or by calling the method:
 
-	setOption(<option>, <value>)
+	element.spagSequencer( 'setOption', <option>, <value>);
 
 **available options:**  
 	*bpm*:			*integer*		Beats Per Minute, controls the speed  
@@ -45,8 +45,8 @@ give the sequencer an object on initialization or by calling the method:
 	element.spagSequencer("removeAllEvents");
 
 ### Controls
-Call 'play', 'pause', 'stop' to control the sequencer.
+Call 'start', 'pause', 'stop' to control the sequencer.
 
-	element.spagSequencer("play");
+	element.spagSequencer("start");
 	element.spagSequencer("pause");
 	element.spagSequencer("stop");

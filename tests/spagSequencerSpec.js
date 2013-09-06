@@ -217,7 +217,6 @@ describe( "Sequencer", function()
 		expect(instance.options.loop).toBeTruthy();
 	});
 
-	// TODO: Add reverse feature
 	it("reverse will make the current step the previous one", function()
 	{
 		sequencer.spagSequencer("setOption", "reverse", true);
@@ -225,7 +224,6 @@ describe( "Sequencer", function()
 		expect(instance.currentStep).toEqual(32);
 	});
 
-	// TODO: Add fire on add feature (optional).
 	it("should fire on add if option is enabled", function()
 	{
 		sequencer.spagSequencer("setOption", "fireOnAdd", true);

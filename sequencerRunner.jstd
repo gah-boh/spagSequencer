@@ -7,7 +7,7 @@ load:
   - spagSequencer.js
 
 test:
-  - tests/*.Test.js
+  - tests/*Spec.js
 
 
 timeout: 90

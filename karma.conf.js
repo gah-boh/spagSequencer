@@ -12,13 +12,13 @@ files = [
 	JASMINE_ADAPTER,
 
 	// Libraries
-	'scripts/jquery/jquery-1.9.1.js',
+	'examples/scripts/jquery/jquery-1.9.1.js',
 
 	// Source
 	'spagSequencer.js',
 
 	// Tests
-	'test/*.Test.js'
+	'test/*Spec.js'
 ];
 
 

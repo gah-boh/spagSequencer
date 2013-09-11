@@ -18,7 +18,7 @@ files = [
 	'spagSequencer.js',
 
 	// Tests
-	'test/*Spec.js'
+	'tests/*Spec.js'
 ];
 
 

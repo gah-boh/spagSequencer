@@ -1,115 +1,92 @@
-/* Start Reset */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+html, body
+{
+    height: 100%;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
-body {
-    line-height: 1;
-}
-ol, ul {
-    list-style: none;
-}
-blockquote, q {
-    quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-/* End Reset */
+
+html {  background-color: #edeef2; }
 
 #wrapper
 {
+    background-color: #556171;
+    min-height: 100%;
     width: 960px;
-    background-color: #ddd;
     margin: 0 auto;
-    margin-top: 60px;
 }
 
-.box
+.section
 {
-    width: 60px;
-    height: 60px;
+    clear: both;
     float: left;
+    width: 100%;
 }
 
-.light
-{
+.light {
     width: 20px;
     height: 20px;
-    margin-left: 15px;
-    border-radius: 10px;
     background-color: #000;
+    float: left;
+    margin: 17px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
-.lightOn
-{
-    background-color: red;
+.sampler-step .light {
+    float: none;
+    display: block;
+    margin: 0 auto 10px auto;
 }
 
-.samplerButton
-{
+.light.light-on {
+    background-color: #b9c0c6;
+}
+
+.controls-button {
+    float: left;
     width: 100px;
-    height: 100px;
-    margin-right: 10px;
+    height: 30px;
+    margin: 0 5px;
+    background-color: #edeef2;
     text-align: center;
-    line-height: 100px;
-    background-color: #ddd;
+    line-height: 30px;
+}
+
+.control-active {
+    background-color: #9b9b9b;
+}
+
+#sampler-container {
+    width: 800px;
     float: left;
+    margin-bottom: 20px;
+    margin: 0 0 20px 80px;
 }
 
-.sample-pad
-{
-    width: 50px;
-    height: 50px;
-    margin: 5px;
+.sampler-step {
     float: left;
-    background-color: #999;
+    padding: 5px;
 }
 
-.sample-on
-{
-	background-color: #e9e5cc;
+#sampler-container .sampler-step:nth-of-type(4n+1) {
+    background-color: #617584;
 }
 
-.samplerRow
-{
-    float: left;
-    overflow: hidden;
+.sample-pad {
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    display: block;
+    margin-bottom: 10px;
 }
 
-.samplerRow .sample-pad:first-child
-{
-    margin-left: 0;
+.sampler-step .sample-pad:last-of-type {
+    margin-bottom: 0;
 }
 
-.samplerRow .sample-pad:last-child
-{
-    margin-right: 0;
+.active-sample {
+    background-color: #a1a1a1;
 }
+
+
+
+

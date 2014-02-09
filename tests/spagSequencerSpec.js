@@ -1,5 +1,6 @@
 describe( "Sequencer", function() {
-	var sequencer, instance;
+	var sequencer, 
+		instance;
 
 	beforeEach( function() {
 		sequencer = $('<div id="sequencerDiv"></div>').spagSequencer({

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>spag sequencer sandbox</title>
+	<link rel="stylesheet" href="css/site.css">
+	<script src="scripts/jquery/jquery-1.9.1.js"></script>
+	<script src="../spagSequencer.js"></script>
+	<script src="scripts/sequencerExample.js"></script>
+	<script>
+		$(document).ready( function()
+			{
+				window.sampler = new SequencerExample();
+			});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="sampler-container">
+		</div>
+		<div class="section">
+			<div class="controls-button" id="start">Start</div>
+			<div class="controls-button" id="stop">Stop</div>
+			<div class="controls-button" id="pause">Pause</div>
+			<div class="controls-button" id="loop">Loop</div>
+		</div>
+	</div>
+</body>
+</html>

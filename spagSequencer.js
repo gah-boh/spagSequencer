@@ -201,7 +201,6 @@
 	    });
 	};
 
-	// TODO: Understand constructor using the jQuery function and uppercase.
 	$.fn.spagSequencer.Constructor = SpagSequencer;
 
 	$.fn.spagSequencer.defaults = {
